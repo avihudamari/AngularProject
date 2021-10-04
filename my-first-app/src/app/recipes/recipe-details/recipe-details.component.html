@@ -1,6 +1,11 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="" [alt]=recipe.name class="img-responsive" style="width: 200px; border-radius: 10px;"  [src]="recipe.imagePath">
+        <img
+            src=""
+            [alt]=recipe.name
+            class="img-responsive"
+            style="width: 200px; border-radius: 10px;" 
+            [src]="recipe.imagePath">
     </div>
 </div>
 <div class="row">
@@ -22,8 +27,8 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a (click)="toShoppingList()" style='cursor: pointer;'>To Shopping List</a></li>
-                <li><a href="#">Edit Recipe</a></li>
-                <li><a href="#">Delete Recipe</a></li>
+                <li><a style='cursor: pointer;'>Edit Recipe</a></li>
+                <li><a style='cursor: pointer;'>Delete Recipe</a></li>
             </ul>
         </div>
     </div>
