@@ -26,9 +26,9 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a (click)="toShoppingList()" style='cursor: pointer;'>To Shopping List</a></li>
+                <li><a (click)="toShoppingList()" style='cursor: pointer;'>To The Shopping List</a></li>
                 <li><a routerLink='edit' style='cursor: pointer;'>Edit Recipe</a></li>
-                <li><a style='cursor: pointer;'>Delete Recipe</a></li>
+                <li><a (click)="onDeleteRecipe()" style='cursor: pointer;'>Delete Recipe</a></li>
             </ul>
         </div>
     </div>
@@ -49,4 +49,5 @@
             </ui>
         </ul>
     </div>
+    <div id="snackbar" #snackbar>The ingredients added to shopping list successfully!</div>
 </div>
