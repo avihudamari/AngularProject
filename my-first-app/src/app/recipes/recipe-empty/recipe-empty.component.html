@@ -1,1 +1,9 @@
-<h3>Please select a Recipe!</h3>
+<h3 *ngIf="!recipeListEmpty">Please select a Recipe!</h3>
+<div *ngIf="recipeListEmpty">
+    <h3>
+        There are no recipes yet
+    </h3>
+    <p>
+        fecth data or add a new recipe. 
+    </p>
+</div>
