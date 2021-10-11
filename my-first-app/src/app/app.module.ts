@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeEmptyComponent } from './recipes/recipe-empty/recipe-empty.component';
 import { RecipeService } from './recipes/recipe.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinner } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RecipeService } from './recipes/recipe.service';
     ShoppingEditComponent,
     dropdownDirective,
     RecipeEditComponent,
-    RecipeEmptyComponent
+    RecipeEmptyComponent,
+    AuthComponent,
+    LoadingSpinner
   ],
   imports: [
     BrowserModule,
