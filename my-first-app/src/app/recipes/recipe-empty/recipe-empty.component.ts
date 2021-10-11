@@ -12,14 +12,14 @@ export class RecipeEmptyComponent implements OnInit, OnDestroy {
   constructor(private rs: RecipeService) { }
 
   recipeListEmpty = false;
-  subcription = new Subscription;
+  recipeChangeSub = new Subscription;
 
   ngOnInit(): void {
     if (this.rs.getRecipes().length === 0) {
       this.recipeListEmpty = true;
     }
 
-    this.subcription = this.rs.recipesChange.subscribe(
+    this.recipeChangeSub = this.rs.recipesChange.subscribe(
       () => {
         if (this.rs.getRecipes().length === 0) {
           this.recipeListEmpty = true;
@@ -32,7 +32,7 @@ export class RecipeEmptyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subcription.unsubscribe();
+    this.recipeChangeSub.unsubscribe();
   }
 
 }
