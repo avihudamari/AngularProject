@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private as: AuthService) { }
+  constructor(
+    private as: AuthService,
+    private router: Router) { }
 
-  SignUpMode = true;
+  SignUpMode = false;
   isLoading = false;
   errorObject: {
     code: string,
@@ -32,35 +35,35 @@ export class AuthComponent implements OnInit {
     this.isLoading = true;
 
     if (this.SignUpMode) {
-      this.as.signup(email, password)
+      this.as.sign('up', email, password)
       .subscribe(
         res => {
-          console.log(res);
+          // console.log(res);
           this.isLoading = false;
+          this.router.navigate(['/recipes']);
         },
-        error => {
-          let errorMessage;
-
-          switch(error.error.error.message) {
-            case 'EMAIL_EXISTS':
-              errorMessage = 'this email exists already!' 
-          }
-
-          this.errorObject = {
-            code: error.error.error.code,
-            message: errorMessage
-          } ;
-
+        errorObject => {         
+          this.errorObject = errorObject;
           this.isLoading = false;
         }
       );
     }
     else {
-      //...
-      this.isLoading = false;
+      this.as.sign('in', email, password)
+      .subscribe(
+        res => {
+          // console.log(res);
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+        },
+        errorObject => {
+          // console.log(errorObject);       
+          this.errorObject = errorObject;
+          this.isLoading = false;
+        }
+      );
     }
 
     form.reset();
   }
-
 }

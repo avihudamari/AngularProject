@@ -1,0 +1,8 @@
+.logoutBtn {
+    background-color: red;
+    border-radius: 10px;
+}
+
+.logoutBtn>a {
+    color: white;
+}

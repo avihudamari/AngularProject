@@ -5,6 +5,6 @@ import { Component } from "@angular/core";
     selector: 'app-loading-spinner',
     styleUrls: ['./loading-spinner.component.css']
 })
-export class LoadingSpinner {
+export class LoadingSpinnerComponent {
 
 }

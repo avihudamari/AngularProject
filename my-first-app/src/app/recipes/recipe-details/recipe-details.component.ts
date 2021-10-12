@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShoppingListService } from 'src/app/shopping-list/shoping-list.service';
 import { Recipe } from '../recipe.model';
@@ -10,6 +10,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
+  @ViewChild('appSnackbar') appSnackbar;
   recipe: Recipe;
   id: number;
 
@@ -29,14 +30,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   toShoppingList() {
     this.sls.onIngredientsAdded(this.recipe.ingredients);
-
-    let x = document.getElementById("snackbar");
-    console.log(x);
-    x.className = "show";
-    setTimeout(() =>{
-      x.className = x.className.replace("show", "")
-      console.log(x);;
-    }, 3000);
+    this.appSnackbar.fire();
   }
 
   onDeleteRecipe() {
