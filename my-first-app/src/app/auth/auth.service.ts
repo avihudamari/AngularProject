@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { User } from "./user.model";
+import { environment } from '../../environments/environment';
 
 interface AuthResponse {
     email: string,
@@ -14,7 +15,6 @@ interface AuthResponse {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    firbaseAPIKey = "AIzaSyDUdYT-N99xrqGHfijW957qPWP7MEWhYrM";
     
     constructor(
         private http: HttpClient,
@@ -26,8 +26,8 @@ export class AuthService {
     sign(mode: string, email: string, password: string) {
         return this.http
         .post<AuthResponse>(
-            mode == 'up' ? 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.firbaseAPIKey :
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + this.firbaseAPIKey,
+            mode == 'up' ? 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey :
+            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
             {
                 email : email,
                 password: password,
