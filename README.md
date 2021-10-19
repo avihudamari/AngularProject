@@ -5,7 +5,7 @@ Recipe Book Application
 ================================================================== <br/>
 ng serve - build and deploy on development server (localhost)
 
-ng build - build for production
+ng build - build for production <br/>
 firebase deploy - deploy on firebase hosting
 
 ================================================================== <br/>
